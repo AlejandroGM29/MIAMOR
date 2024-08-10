@@ -7,7 +7,7 @@ $(document).ready(function () {
         { image: './src/BarrioSinLuz+.png', effect: 'fireworks' },
         { image: './src/raquel 2.jpg', effect: 'hearts' },
         { image: './src/raquel 3.jpg', effect: 'moons' },
-        { image: './src/cigarro.png', effect: 'smoke' },
+        { image: './src/Cigarro.png', effect: 'smoke' },
         { image: './src/lugarBonito.jpg', effect: 'love_words' },
         { image: './src/monitosJuntos.png', effect: 'fireworks' },
         { image: './src/raquel 4.jpg', effect: 'hearts' },
