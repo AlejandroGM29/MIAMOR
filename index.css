@@ -1,0 +1,156 @@
+body {
+    background-color: darkslateblue;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;  /* Asegura que el ancho del body sea igual al ancho del viewport */
+    height: 100vh; /* Asegura que la altura del body sea igual a la altura del viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#audioDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: all 1s ease;
+    z-index: 10; /* Asegura que el audio esté por encima de todo */
+}
+
+#audioDiv.moveUp {
+    top: 10%; /* Mueve el audio hacia arriba cuando se reproduce */
+    transform: translateX(-50%);
+}
+
+#container {
+    display: none; /* Oculta la imagen y los puntos al inicio */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#container.show {
+    display: flex; /* Muestra la imagen y los puntos cuando se reproduce */
+    opacity: 1;
+}
+
+#divImg {
+    width: fit-content;
+    margin: 0 auto; /* Centra horizontalmente el div de la imagen */
+    animation: flipTilt 2s infinite steps(1); /* Duración de 2s para un ciclo completo */
+    animation-play-state: paused; /* Inicia en pausa */
+}
+
+/* Animación de inclinación */
+@keyframes flipTilt {
+    0% {
+        transform: rotate(10deg); /* Posición inclinada a la derecha (/) */
+    }
+    50% {
+        transform: rotate(-10deg); /* Posición inclinada a la izquierda (\) */
+    }
+    100% {
+        transform: rotate(10deg); /* Vuelve a la posición inicial inclinada a la derecha (/) */
+    }
+}
+
+.point {
+    position: absolute;
+    transform-origin: center center;
+    animation: growAndFade 4s linear infinite, moveRandomly 4s linear infinite;
+    width: 8px;
+    height: 8px;
+    z-index: 8888; /* Asegúrate de que los puntos estén visibles por encima de otros elementos */
+    border-radius: 50%
+}
+
+
+
+.love-word {
+    position: absolute;
+    font-size: 0; /* Empieza en tamaño 0 */
+    color: white;
+    animation: growAndFadeText 2s linear infinite, moveRandomly 2s linear infinite;
+    z-index: 5; /* Coloca las palabras detrás de otros elementos importantes */
+}
+
+@keyframes growAndFade {
+    0% {
+        transform: scale(0); /* Inicia en tamaño 0 */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1); /* Crece hasta tamaño completo */
+        opacity: 0;
+    }
+}
+
+@keyframes growAndFadeText {
+    0% {
+        font-size: 0px; /* Inicia en tamaño 0 */
+        opacity: 1;
+    }
+    100% {
+        font-size: 20px; /* Crece hasta tamaño completo */
+        opacity: 0;
+    }
+}
+
+@keyframes moveRandomly {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50px + 100px * random()), calc(-50px + 100px * random()));
+        opacity: 0;
+    }
+}
+
+#imgRaquel {
+    border: 5px solid white;
+    width: 65vw;
+    height: 35vh;
+    margin-bottom: 0; /* Asegura que no haya margen inferior */
+    display: block;
+}
+
+#pieFoto {
+    margin-top: 0; /* Asegura que no haya margen superior */
+    background-color: white;
+    border: 5px solid white;
+    width: 65vw; /* Asegura que el ancho sea igual al de la imagen */
+    text-align: center;
+    padding: 15px 0; /* Ajusta el padding según tus preferencias */
+}
+
+#pieFoto h4 {
+    margin: 0; /* Remueve cualquier margen por defecto */
+    background-color: white;
+}
+@keyframes cascadeUp {
+    0% {
+        transform: translateY(100vh) scale(0.5); /* Inicia desde la parte inferior de la pantalla */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-20vh) scale(1.2); /* Se mueve hacia arriba y crece */
+        opacity: 0; /* Desaparece al llegar arriba */
+    }
+}
+
+.cascade {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    animation: cascadeUp 2s linear infinite;
+}
